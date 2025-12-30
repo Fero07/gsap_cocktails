@@ -1,13 +1,11 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger, SplitText } from "gsap/all";
+import { SplitText } from "gsap/all";
 import { useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 
 function Hero() {
   const videoRef = useRef();
-
-  gsap.registerPlugin(ScrollTrigger, SplitText);
 
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
@@ -46,9 +44,9 @@ function Hero() {
       .to(".left-leaf", { y: -200 }, 0);
 
     const startValue = isMobile ? "top 50%" : "center 60%";
-    const endValue = isMobile ? "120% top" : "b0ttom top";
+    const endValue = isMobile ? "120% top" : "bottom top";
 
-    const tl = gsap.timeline({
+    let tl = gsap.timeline({
       scrollTrigger: {
         trigger: "video",
         start: startValue,
