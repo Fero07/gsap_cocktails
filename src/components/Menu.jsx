@@ -24,6 +24,18 @@ function Menu() {
       { yPercent: 100, opacity: 0 },
       { yPercent: 0, opacity: 100, ease: "power1.inOut" }
     );
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#menu",
+          start: "top 30%",
+          end: "bottom 80%",
+          scrub: true,
+        },
+      })
+      .to(".right-leaf", { y: 300 }, 0)
+      .to(".left-leaf", { y: -300 }, 0);
   }, [currentIndex]);
 
   const totalCocktails = sliderLists.length;
@@ -48,11 +60,13 @@ function Menu() {
         src="/images/slider-left-leaf.png"
         alt="left-leaf"
         id="m-left-leaf"
+        className="left-leaf"
       />
       <img
         src="/images/slider-right-leaf.png"
         alt="right-leaf"
         id="m-right-leaf"
+        className="right-leaf"
       />
 
       <h2 id="menu-heading" className="sr-only">
